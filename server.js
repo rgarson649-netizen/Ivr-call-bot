@@ -14,7 +14,15 @@ const TEST_TO_NUMBER = process.env.TEST_TO_NUMBER;
 app.get("/", function (req, res) {
   res.send("IVR Call Bot is running.");
 });
-
+app.get("/test", function (req, res) {
+  res.send(
+    <h2>IVR Call Bot</h2>
+    <p>Authorized test call only.</p>
+    <form method="POST" action="/test-call">
+      <button type="submit">Call My Test Number</button>
+    </form>
+  );
+});
 app.post("/test-call", async function (req, res) {
   const missing = [];
 
