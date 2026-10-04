@@ -10,7 +10,7 @@ const TELNYX_API_KEY = process.env.TELNYX_API_KEY;
 const TELNYX_CONNECTION_ID = process.env.TELNYX_CONNECTION_ID;
 const TELNYX_FROM_NUMBER = process.env.TELNYX_FROM_NUMBER;
 const TEST_TO_NUMBER = process.env.TEST_TO_NUMBER;
-
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 app.get("/", function (req, res) {
   res.send("IVR Call Bot is running.");
 });
