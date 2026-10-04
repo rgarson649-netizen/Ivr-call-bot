@@ -17,7 +17,11 @@ app.get("/", (req, res) => {
 
 // Start one authorized test call
 app.post("/test-call", async (req, res) => {
-  if (!TELNYX_API_KEY  !TELNYX_CONNECTION_ID 
+  if (!TELNYX_API_KEY  !TELNYX_CONNECTION_ID  !TELNYX_FROM_NUMBER || !TEST_TO_NUMBER) {
+  return res.status(500).json({
+    error: "Telnyx environment variables are not configured yet."
+  });
+}
       !TELNYX_FROM_NUMBER || !TEST_TO_NUMBER) {
     return res.status(500).json({
       error: "Telnyx environment variables are not configured yet."
