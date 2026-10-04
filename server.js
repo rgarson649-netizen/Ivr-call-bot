@@ -181,3 +181,21 @@ async function setupTelegramWebhook() {
 }
 
 setupTelegramWebhook();
+async function setupTelegramWebhook() {
+  if (!TELEGRAM_BOT_TOKEN) return;
+
+  const webhookUrl = "https://ivr-call-bot-1.onrender.com/telegram/webhook";
+
+  const response = await fetch(
+    "https://api.telegram.org/bot" + TELEGRAM_BOT_TOKEN + "/setWebhook",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: webhookUrl })
+    }
+  );
+
+  console.log("Telegram webhook:", await response.text());
+}
+
+setupTelegramWebhook();
