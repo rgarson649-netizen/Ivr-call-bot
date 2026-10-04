@@ -18,6 +18,13 @@ async function sendTelegramMessage(chatId, text) {
     body: JSON.stringify({ chat_id: chatId, text: text })
   });
 }
+app.post("/telegram/webhook", async function (req, res) {
+  const message = req.body.message;
+  if (message && message.chat && message.text === "/test") {
+    await sendTelegramMessage(message.chat.id, "Telegram connection is working.");
+  }
+  res.sendStatus(200);
+});
 app.get("/", function (req, res) {
   res.send("IVR Call Bot is running.");
 });
